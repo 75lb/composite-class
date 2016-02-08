@@ -1,12 +1,17 @@
 {
   "name": "composite-class",
   "author": "Lloyd Brookes <75pound@gmail.com>",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "composite-class",
   "repository": "https://github.com/75lb/composite-class.git",
   "license": "MIT",
   "main": "./lib/composite-class.js",
-  "keywords": [ "composite", "design", "pattern", "es6" ],
+  "keywords": [
+    "composite",
+    "design",
+    "pattern",
+    "es6"
+  ],
   "engines": {
     "node": ">=0.10.0"
   },
