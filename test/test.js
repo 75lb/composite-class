@@ -1,6 +1,14 @@
+'use strict'
 var test = require('tape')
-var lib = require('../')
+var Composite = require('../')
 
-test('first', function(t){
-
+test('.getRoot()', function(t){
+  const tree = new Composite()
+  tree.id = 'root'
+  let child = tree.add(new Composite())
+  child.id = 1
+  child = tree.add(new Composite())
+  child.id = 2
+  t.strictEqual(child.root().id, 'root')
+  t.end()
 })
