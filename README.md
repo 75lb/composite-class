@@ -10,13 +10,13 @@
 
 * composite-class
     * [Composite](#exp_module_composite-class--Composite) ⏏
-        * [composite.children](#module_composite-class--Composite.Composite+children) : `Array`
-        * [composite.parent](#module_composite-class--Composite.Composite+parent) : `Composite`
-        * [composite.add()](#module_composite-class--Composite+add)
-        * [composite.level()](#module_composite-class--Composite+level) ⇒ `number`
-        * [composite.tree()](#module_composite-class--Composite+tree) ⇒ `string`
-        * [composite.root()](#module_composite-class--Composite+root) ⇒ [`Composite`](#exp_module_composite-class--Composite)
-        * [composite.Symbol.iterator()](#module_composite-class--Composite+Symbol.iterator)
+        * [.children](#module_composite-class--Composite.Composite+children) : `Array`
+        * [.parent](#module_composite-class--Composite.Composite+parent) : `Composite`
+        * [.add()](#module_composite-class--Composite+add)
+        * [.level()](#module_composite-class--Composite+level) ⇒ `number`
+        * [.tree()](#module_composite-class--Composite+tree) ⇒ `string`
+        * [.root()](#module_composite-class--Composite+root) ⇒ [`Composite`](#exp_module_composite-class--Composite)
+        * [.Symbol.iterator()](#module_composite-class--Composite+Symbol.iterator)
 
 
 <a name="exp_module_composite-class--Composite"></a>
