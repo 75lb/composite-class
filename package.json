@@ -17,10 +17,9 @@
   },
   "scripts": {
     "test": "tape test/*.js",
-    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
+    "docs": "jsdoc2md2 -t jsdoc2md/README.md lib/*.js > README.md; echo"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^1.3.3",
     "tape": "^4.4.0"
   }
 }
