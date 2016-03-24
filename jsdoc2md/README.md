@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/jsdoc2md/composite-class.svg)](https://david-dm.org/jsdoc2md/composite-class)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
-${docs.renderAll()}
+{{>main}}
 
 * * *
 
