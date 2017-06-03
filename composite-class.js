@@ -6,6 +6,7 @@
 
 /**
  * A base class for building standard composite structures.
+ * @alias module:composite-class
  */
 class Composite {
   constructor () {
