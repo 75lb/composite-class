@@ -5,7 +5,7 @@
   "description": "composite-class",
   "repository": "https://github.com/75lb/composite-class.git",
   "license": "MIT",
-  "main": "./lib/composite-class.js",
+  "main": "composite-class.js",
   "keywords": [
     "composite",
     "design",
@@ -13,17 +13,17 @@
     "es6"
   ],
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
-    "test": "tape test/*.js",
-    "docs": "jsdoc2md -t jsdoc2md/README.md lib/*.js > README.md; echo"
+    "test": "test-runner test.js",
+    "docs": "jsdoc2md -t README.hbs composite-class.js > README.md; echo"
   },
   "devDependencies": {
-    "tape": "^4.5.1"
+    "test-runner": "^0.3.0"
   },
   "dependencies": {
-    "array-back": "^1.0.3",
-    "find-replace": "^1.0.2"
+    "array-back": "^1.0.4",
+    "find-replace": "^1.0.3"
   }
 }

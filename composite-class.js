@@ -1,6 +1,4 @@
 'use strict'
-const findReplace = require('find-replace')
-const arrayify = require('array-back')
 
 /**
  * @module composite-class
@@ -70,6 +68,8 @@ class Composite {
    * @param {*} replaceWith
    */
   replace (findQuery, replaceWith) {
+    const findReplace = require('find-replace')
+    const arrayify = require('array-back')
     findReplace(this.children, findQuery, replaceWith)
     arrayify(replaceWith).forEach(item => item.parent = this)
   }
@@ -106,6 +106,10 @@ class Composite {
       return prev += this.treeItem(curr)
     }, '')
   }
+
+  /**
+   * @returns {string}
+   */
   treeItem (item) {
     return `${'  '.repeat(item.level())}- ${item}\n`
   }
@@ -142,6 +146,10 @@ class Composite {
     return clone
   }
 
+  /**
+   * Returns an array of ancestors
+   * @return {Composite[]}
+   */
   parents () {
     const output = []
     function addParent (node) {
