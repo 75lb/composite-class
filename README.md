@@ -16,11 +16,9 @@
         * [.append(child)](#module_composite-class--Composite+append) ⇒ <code>Composite</code>
         * [.prepend(child)](#module_composite-class--Composite+prepend) ⇒ <code>Composite</code>
         * [.remove(child)](#module_composite-class--Composite+remove) ⇒ <code>Composite</code>
-        * [.replace(findQuery, replaceWith)](#module_composite-class--Composite+replace)
         * [.level()](#module_composite-class--Composite+level) ⇒ <code>number</code>
         * [.getDescendentCount()](#module_composite-class--Composite+getDescendentCount) ⇒ <code>number</code>
         * [.tree()](#module_composite-class--Composite+tree) ⇒ <code>string</code>
-        * [.treeItem()](#module_composite-class--Composite+treeItem) ⇒ <code>string</code>
         * [.root()](#module_composite-class--Composite+root) ⇒ <code>Composite</code>
         * [.Symbol.iterator()](#module_composite-class--Composite+Symbol.iterator)
         * [.inspect()](#module_composite-class--Composite+inspect)
@@ -77,16 +75,6 @@ Add a child
 | --- | --- | --- |
 | child | <code>Composite</code> | the child node to remove |
 
-<a name="module_composite-class--Composite+replace"></a>
-
-#### composite.replace(findQuery, replaceWith)
-**Kind**: instance method of [<code>Composite</code>](#exp_module_composite-class--Composite)  
-
-| Param | Type |
-| --- | --- |
-| findQuery | <code>test</code> | 
-| replaceWith | <code>\*</code> | 
-
 <a name="module_composite-class--Composite+level"></a>
 
 #### composite.level() ⇒ <code>number</code>
@@ -102,10 +90,6 @@ depth level in the tree, 0 being root.
 #### composite.tree() ⇒ <code>string</code>
 prints a tree using the .toString() representation of each node in the tree
 
-**Kind**: instance method of [<code>Composite</code>](#exp_module_composite-class--Composite)  
-<a name="module_composite-class--Composite+treeItem"></a>
-
-#### composite.treeItem() ⇒ <code>string</code>
 **Kind**: instance method of [<code>Composite</code>](#exp_module_composite-class--Composite)  
 <a name="module_composite-class--Composite+root"></a>
 

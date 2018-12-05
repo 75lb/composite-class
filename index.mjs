@@ -91,15 +91,8 @@ class Composite {
    */
   tree () {
     return Array.from(this).reduce((prev, curr) => {
-      return prev += this.treeItem(curr)
+      return prev += `${'  '.repeat(curr.level())}- ${curr}\n`
     }, '')
-  }
-
-  /**
-   * @returns {string}
-   */
-  treeItem (item) {
-    return `${'  '.repeat(item.level())}- ${item}\n`
   }
 
   /**
@@ -113,14 +106,12 @@ class Composite {
     return getRoot(this)
   }
 
-  subSet () { return null }
-
   /**
    * default iteration strategy
    */
   * [Symbol.iterator] () {
     yield this
-    for (let child of this.subSet() || this.children) {
+    for (let child of this.children) {
       yield * child
     }
   }
@@ -151,4 +142,4 @@ class Composite {
   }
 }
 
-module.exports = Composite
+export default Composite
