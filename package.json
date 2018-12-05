@@ -2,10 +2,9 @@
   "name": "composite-class",
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "0.2.1",
-  "description": "composite-class",
+  "description": "A general purpose composite class",
   "repository": "https://github.com/75lb/composite-class.git",
   "license": "MIT",
-  "main": "composite-class.js",
   "keywords": [
     "composite",
     "design",
@@ -13,11 +12,11 @@
     "es6"
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "scripts": {
     "test": "test-runner test.js",
-    "docs": "jsdoc2md -t README.hbs composite-class.js > README.md; echo"
+    "docs": "jsdoc2md -t README.hbs index.js > README.md; echo"
   },
   "devDependencies": {
     "test-runner": "^0.5.1"
