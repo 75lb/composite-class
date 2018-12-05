@@ -1,4 +1,3 @@
-'use strict'
 const Composite = require('./')
 const TestRunner = require('test-runner')
 const a = require('assert')
