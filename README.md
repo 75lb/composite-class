@@ -10,8 +10,8 @@
 
 * [composite-class](#module_composite-class)
     * [Composite](#exp_module_composite-class--Composite) ⏏
-        * [.children](#module_composite-class--Composite.Composite+children) : <code>Array</code>
-        * [.parent](#module_composite-class--Composite.Composite+parent) : <code>Composite</code>
+        * [.children](#module_composite-class--Composite+children) : <code>Array</code>
+        * [.parent](#module_composite-class--Composite+parent) : <code>Composite</code>
         * [.add()](#module_composite-class--Composite+add) ⇒ <code>Composite</code>
         * [.append(child)](#module_composite-class--Composite+append) ⇒ <code>Composite</code>
         * [.prepend(child)](#module_composite-class--Composite+prepend) ⇒ <code>Composite</code>
@@ -32,13 +32,13 @@
 A base class for building standard composite structures.
 
 **Kind**: Exported class  
-<a name="module_composite-class--Composite.Composite+children"></a>
+<a name="module_composite-class--Composite+children"></a>
 
 #### composite.children : <code>Array</code>
 children
 
 **Kind**: instance property of [<code>Composite</code>](#exp_module_composite-class--Composite)  
-<a name="module_composite-class--Composite.Composite+parent"></a>
+<a name="module_composite-class--Composite+parent"></a>
 
 #### composite.parent : <code>Composite</code>
 parent

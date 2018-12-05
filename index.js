@@ -63,17 +63,6 @@ class Composite {
   }
 
   /**
-   * @param {test} findQuery
-   * @param {*} replaceWith
-   */
-  replace (findQuery, replaceWith) {
-    const findReplace = require('find-replace')
-    const arrayify = require('array-back')
-    findReplace(this.children, findQuery, replaceWith)
-    arrayify(replaceWith).forEach(item => item.parent = this)
-  }
-
-  /**
    * depth level in the tree, 0 being root.
    * @returns {number}
    */
