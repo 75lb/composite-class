@@ -27,19 +27,19 @@
 <a name="exp_module_composite-class--Composite"></a>
 
 ### Composite ⏏
-A base class for building standard composite structures.
+A base class for building standard composite structures. Can also be mixed in.
 
 **Kind**: Exported class  
 <a name="module_composite-class--Composite+children"></a>
 
 #### composite.children : <code>Array</code>
-children
+Children
 
 **Kind**: instance property of [<code>Composite</code>](#exp_module_composite-class--Composite)  
 <a name="module_composite-class--Composite+parent"></a>
 
 #### composite.parent : <code>Composite</code>
-parent
+Parent
 
 **Kind**: instance property of [<code>Composite</code>](#exp_module_composite-class--Composite)  
 <a name="module_composite-class--Composite+add"></a>

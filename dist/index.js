@@ -1,30 +1,48 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global.Composite = factory());
-}(this, (function () { 'use strict';
+  (global = global || self, global.Composite = factory());
+}(this, function () { 'use strict';
 
   /**
    * @module composite-class
    */
 
+  const _children = new WeakMap();
+  const _parent = new WeakMap();
+
   /**
-   * A base class for building standard composite structures.
+   * A base class for building standard composite structures. Can also be mixed in.
    * @alias module:composite-class
    */
   class Composite {
-    constructor () {
-      /**
-       * children
-       * @type {Array}
-       */
-      this.children = [];
+    /**
+     * Children
+     * @type {Array}
+     */
+    get children () {
+      if (_children.has(this)) {
+        return _children.get(this)
+      } else {
+        _children.set(this, []);
+        return _children.get(this)
+      }
+    }
 
-      /**
-       * parent
-       * @type {Composite}
-       */
-      this.parent = null;
+    set children (val) {
+      _children.set(this, val);
+    }
+
+
+    /**
+     * Parent
+     * @type {Composite}
+     */
+    get parent () {
+      return _parent.get(this)
+    }
+    set parent (val) {
+      _parent.set(this, val);
     }
 
     /**
@@ -32,7 +50,7 @@
      * @returns {Composite}
      */
     add (child) {
-      if (!(child instanceof Composite)) throw new Error('can only add a Composite instance')
+      if (!(isComposite(child))) throw new Error('can only add a Composite instance')
       child.parent = this;
       this.children.push(child);
       return child
@@ -107,7 +125,7 @@
      */
     root () {
       function getRoot (composite) {
-        return composite.parent === null ? composite : getRoot(composite.parent)
+        return composite.parent ? getRoot(composite.parent) : composite
       }
       return getRoot(this)
     }
@@ -148,6 +166,10 @@
     }
   }
 
+  function isComposite (item) {
+    return item && item.children && item.add && item.level && item.root
+  }
+
   return Composite;
 
-})));
+}));
