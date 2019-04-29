@@ -27,7 +27,6 @@ class Composite {
     _children.set(this, val)
   }
 
-
   /**
    * Parent
    * @type {Composite}

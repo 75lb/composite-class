@@ -33,7 +33,6 @@
       _children.set(this, val);
     }
 
-
     /**
      * Parent
      * @type {Composite}
