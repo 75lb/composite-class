@@ -4,7 +4,7 @@ const a = require('assert')
 
 const tom = module.exports = new Tom()
 
-tom.test('.add()', function(t){
+tom.test('.add()', function (t) {
   const root = new Composite()
   root.id = 'root'
   let child = root.add(new Composite())
@@ -18,7 +18,7 @@ tom.test('.add()', function(t){
   a.strictEqual(root.children[1].parent, root)
 })
 
-tom.test('.root()', function(t){
+tom.test('.root()', function (t) {
   const tree = new Composite()
   tree.id = 'root'
   let child = tree.add(new Composite())

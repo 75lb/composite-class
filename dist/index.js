@@ -5,6 +5,7 @@
 }(this, (function () { 'use strict';
 
   /**
+   * An isomorphic, load-anywhere JavaScript class for building [composite structures](https://en.wikipedia.org/wiki/Composite_pattern). Suitable for use as a super class or mixin.
    * @module composite-class
    */
 
@@ -12,7 +13,6 @@
   const _parent = new WeakMap();
 
   /**
-   * A base class for building standard composite structures. Can also be mixed in.
    * @alias module:composite-class
    */
   class Composite {
@@ -40,6 +40,7 @@
     get parent () {
       return _parent.get(this)
     }
+
     set parent (val) {
       _parent.set(this, val);
     }
@@ -114,7 +115,7 @@
      */
     tree () {
       return Array.from(this).reduce((prev, curr) => {
-        return prev += `${'  '.repeat(curr.level())}- ${curr}\n`
+        return (prev += `${'  '.repeat(curr.level())}- ${curr}\n`)
       }, '')
     }
 
@@ -134,7 +135,7 @@
      */
     * [Symbol.iterator] () {
       yield this;
-      for (let child of this.children) {
+      for (const child of this.children) {
         yield * child;
       }
     }

@@ -2,7 +2,7 @@
   "name": "composite-class",
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "0.3.0",
-  "description": "A general purpose composite class",
+  "description": "An isomorphic JavaScript class for building composite structures. Suitable for use as a super class or mixin.",
   "repository": "https://github.com/75lb/composite-class",
   "license": "MIT",
   "main": "dist/index.js",
@@ -10,7 +10,10 @@
     "composite",
     "design",
     "pattern",
-    "es6"
+    "es6",
+    "isomorphic",
+    "load-anywhere",
+    "tree"
   ],
   "engines": {
     "node": ">=8"
@@ -29,5 +32,10 @@
   "files": [
     "index.mjs",
     "dist/index.js"
-  ]
+  ],
+  "standard": {
+    "ignore": [
+      "dist"
+    ]
+  }
 }
