@@ -1,10 +1,10 @@
 const Composite = require('./')
-const TestRunner = require('test-runner')
+const Tom = require('test-runner').Tom
 const a = require('assert')
 
-const runner = new TestRunner()
+const tom = module.exports = new Tom()
 
-runner.test('.add()', function(t){
+tom.test('.add()', function(t){
   const root = new Composite()
   root.id = 'root'
   let child = root.add(new Composite())
@@ -18,7 +18,7 @@ runner.test('.add()', function(t){
   a.strictEqual(root.children[1].parent, root)
 })
 
-runner.test('.root()', function(t){
+tom.test('.root()', function(t){
   const tree = new Composite()
   tree.id = 'root'
   let child = tree.add(new Composite())

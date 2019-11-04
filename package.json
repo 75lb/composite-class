@@ -3,7 +3,7 @@
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "0.3.0",
   "description": "A general purpose composite class",
-  "repository": "https://github.com/75lb/composite-class.git",
+  "repository": "https://github.com/75lb/composite-class",
   "license": "MIT",
   "main": "dist/index.js",
   "keywords": [
@@ -13,16 +13,21 @@
     "es6"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "scripts": {
     "test": "npm run dist && test-runner test.js",
-    "dist": "rollup -c build/index.config.js",
-    "docs": "jsdoc2md -c build/jsdoc.conf -t README.hbs index.mjs > README.md"
+    "dist": "rollup -f umd -n Composite -o dist/index.js index.mjs",
+    "docs": "jsdoc2md -c jsdoc.conf -t README.hbs index.mjs > README.md"
   },
   "devDependencies": {
-    "rollup": "^1.10.1",
-    "test-runner": "^0.5.1"
+    "jsdoc-to-markdown": "^5.0.2",
+    "rollup": "^1.26.3",
+    "test-runner": "^0.6.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "files": [
+    "index.mjs",
+    "dist/index.js"
+  ]
 }
