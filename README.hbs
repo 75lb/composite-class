@@ -10,7 +10,7 @@ An isomorphic, load-anywhere JavaScript class for building [composite structures
 
 ## Synopsis
 
-The `Composite` implements the [composite design pattern](https://en.wikipedia.org/wiki/Composite_pattern), used for building and traversing tree structures. For example, build a composite structure representing the French government:
+The `Composite` class implements the [composite design pattern](https://en.wikipedia.org/wiki/Composite_pattern), useful for building and traversing tree structures. For example, build a composite structure representing the French government:
 
 ```js
 const Composite = require('composite-class')
