@@ -7,6 +7,8 @@
   /**
    * An isomorphic, load-anywhere JavaScript class for building [composite structures](https://en.wikipedia.org/wiki/Composite_pattern). Suitable for use as a super class or mixin.
    * @module composite-class
+   * @example
+   * const Composite = require('composite-class')
    */
 
   const _children = new WeakMap();
