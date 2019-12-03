@@ -1,7 +1,7 @@
 [![view on npm](https://img.shields.io/npm/v/composite-class.svg)](https://www.npmjs.org/package/composite-class)
 [![npm module downloads](https://img.shields.io/npm/dt/composite-class.svg)](https://www.npmjs.org/package/composite-class)
 [![Build Status](https://travis-ci.org/75lb/composite-class.svg?branch=master)](https://travis-ci.org/75lb/composite-class)
-[![Dependency Status](https://david-dm.org/75lb/composite-class.svg)](https://david-dm.org/75lb/composite-class)
+[![Dependency Status](https://badgen.net/david/dep/75lb/composite-class)](https://david-dm.org/75lb/composite-class)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # composite-class
@@ -68,7 +68,6 @@ Processing: Édouard Philippe
 Processing: Florence Parly
 Processing: Bruno Le Maire
 ```
-
 
 <a name="module_composite-class"></a>
 
@@ -216,4 +215,6 @@ Old browser (adds `window.Composite`):
 
 * * *
 
-&copy; 2016-19 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+&copy; 2016-20 Lloyd Brookes \<75pound@gmail.com\>.
+
+Isomorphic test suite by [esm-runner](https://github.com/test-runner-js/esm-runner) and [web-runner](https://github.com/test-runner-js/web-runner).{1: Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).}
