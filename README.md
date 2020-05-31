@@ -1,7 +1,8 @@
-[![view on npm](https://img.shields.io/npm/v/composite-class.svg)](https://www.npmjs.org/package/composite-class)
-[![npm module downloads](https://img.shields.io/npm/dt/composite-class.svg)](https://www.npmjs.org/package/composite-class)
+[![view on npm](https://badgen.net/npm/v/composite-class)](https://www.npmjs.org/package/composite-class)
+[![npm module downloads](https://badgen.net/npm/dt/composite-class)](https://www.npmjs.org/package/composite-class)
+[![Gihub repo dependents](https://badgen.net/github/dependents-repo/75lb/composite-class)](https://github.com/75lb/composite-class/network/dependents?dependent_type=REPOSITORY)
+[![Gihub package dependents](https://badgen.net/github/dependents-pkg/75lb/composite-class)](https://github.com/75lb/composite-class/network/dependents?dependent_type=PACKAGE)
 [![Build Status](https://travis-ci.org/75lb/composite-class.svg?branch=master)](https://travis-ci.org/75lb/composite-class)
-[![Dependency Status](https://badgen.net/david/dep/75lb/composite-class)](https://david-dm.org/75lb/composite-class)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # composite-class
@@ -83,7 +84,7 @@ const Composite = require('composite-class')
     * [Composite](#exp_module_composite-class--Composite) ⏏
         * [.children](#module_composite-class--Composite+children) : <code>Array</code>
         * [.parent](#module_composite-class--Composite+parent) : <code>Composite</code>
-        * [.add()](#module_composite-class--Composite+add) ⇒ <code>Composite</code>
+        * [.add(child)](#module_composite-class--Composite+add) ⇒ <code>Composite</code>
         * [.append(child)](#module_composite-class--Composite+append) ⇒ <code>Composite</code>
         * [.prepend(child)](#module_composite-class--Composite+prepend) ⇒ <code>Composite</code>
         * [.remove(child)](#module_composite-class--Composite+remove) ⇒ <code>Composite</code>
@@ -113,10 +114,15 @@ Parent
 **Kind**: instance property of [<code>Composite</code>](#exp_module_composite-class--Composite)  
 <a name="module_composite-class--Composite+add"></a>
 
-#### composite.add() ⇒ <code>Composite</code>
+#### composite.add(child) ⇒ <code>Composite</code>
 Add a child
 
 **Kind**: instance method of [<code>Composite</code>](#exp_module_composite-class--Composite)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| child | <code>Composite</code> | the child node to add |
+
 <a name="module_composite-class--Composite+append"></a>
 
 #### composite.append(child) ⇒ <code>Composite</code>

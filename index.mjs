@@ -43,6 +43,7 @@ class Composite {
 
   /**
    * Add a child
+   * @param {Composite} child - the child node to add
    * @returns {Composite}
    */
   add (child) {
