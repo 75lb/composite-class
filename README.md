@@ -2,7 +2,7 @@
 [![npm module downloads](https://badgen.net/npm/dt/composite-class)](https://www.npmjs.org/package/composite-class)
 [![Gihub repo dependents](https://badgen.net/github/dependents-repo/75lb/composite-class)](https://github.com/75lb/composite-class/network/dependents?dependent_type=REPOSITORY)
 [![Gihub package dependents](https://badgen.net/github/dependents-pkg/75lb/composite-class)](https://github.com/75lb/composite-class/network/dependents?dependent_type=PACKAGE)
-[![Build Status](https://travis-ci.org/75lb/composite-class.svg?branch=master)](https://travis-ci.org/75lb/composite-class)
+[![Node.js CI](https://github.com/75lb/composite-class/actions/workflows/node.js.yml/badge.svg)](https://github.com/75lb/composite-class/actions/workflows/node.js.yml)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # composite-class
@@ -221,6 +221,7 @@ Old browser (adds `window.Composite`):
 
 * * *
 
-&copy; 2016-20 Lloyd Brookes \<75pound@gmail.com\>.
+&copy; 2016-23 Lloyd Brookes \<75pound@gmail.com\>.
 
-Isomorphic test suite by [test-runner](https://github.com/test-runner-js/test-runner) and [web-runner](https://github.com/test-runner-js/web-runner). Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+Test suite by [test-runner](https://github.com/test-runner-js/test-runner). Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+
