@@ -163,6 +163,21 @@ class Composite {
     addParent(this);
     return output
   }
+
+  /**
+   * @param {object} - The target class (or constructor function) to receive the state machine behaviour.
+   */
+  static mixInto (target) {
+    for (const methodName of ['children', 'parent', 'add', 'append', 'prepend', 'remove', 'level', 'getDescendentCount', 'tree', 'root', 'inspect', 'parents', Symbol.iterator]) {
+      const sourceMethod = Object.getOwnPropertyDescriptor(this.prototype, methodName);
+      if (target.prototype === undefined) {
+        Object.defineProperty(target, methodName, sourceMethod);
+      } else {
+        Object.defineProperty(target.prototype, methodName, sourceMethod);
+      }
+    }
+    return target
+  }
 }
 
 function isComposite (item) {

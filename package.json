@@ -29,8 +29,8 @@
     "docs": "jsdoc2md -t README.hbs index.js > README.md"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^8.0.0",
-    "rollup": "^3.19.1",
+    "jsdoc-to-markdown": "^8.0.1",
+    "rollup": "^4.18.1",
     "test-runner": "^0.10.1"
   },
   "files": [

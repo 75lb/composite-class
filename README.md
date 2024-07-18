@@ -82,19 +82,22 @@ const Composite = require('composite-class')
 
 * [composite-class](#module_composite-class)
     * [Composite](#exp_module_composite-class--Composite) ⏏
-        * [.children](#module_composite-class--Composite+children) : <code>Array</code>
-        * [.parent](#module_composite-class--Composite+parent) : <code>Composite</code>
-        * [.add(child)](#module_composite-class--Composite+add) ⇒ <code>Composite</code>
-        * [.append(child)](#module_composite-class--Composite+append) ⇒ <code>Composite</code>
-        * [.prepend(child)](#module_composite-class--Composite+prepend) ⇒ <code>Composite</code>
-        * [.remove(child)](#module_composite-class--Composite+remove) ⇒ <code>Composite</code>
-        * [.level()](#module_composite-class--Composite+level) ⇒ <code>number</code>
-        * [.getDescendentCount()](#module_composite-class--Composite+getDescendentCount) ⇒ <code>number</code>
-        * [.tree()](#module_composite-class--Composite+tree) ⇒ <code>string</code>
-        * [.root()](#module_composite-class--Composite+root) ⇒ <code>Composite</code>
-        * [.Symbol.iterator()](#module_composite-class--Composite+Symbol.iterator)
-        * [.inspect()](#module_composite-class--Composite+inspect)
-        * [.parents()](#module_composite-class--Composite+parents) ⇒ <code>Array.&lt;Composite&gt;</code>
+        * _instance_
+            * [.children](#module_composite-class--Composite+children) : <code>Array</code>
+            * [.parent](#module_composite-class--Composite+parent) : <code>Composite</code>
+            * [.add(child)](#module_composite-class--Composite+add) ⇒ <code>Composite</code>
+            * [.append(child)](#module_composite-class--Composite+append) ⇒ <code>Composite</code>
+            * [.prepend(child)](#module_composite-class--Composite+prepend) ⇒ <code>Composite</code>
+            * [.remove(child)](#module_composite-class--Composite+remove) ⇒ <code>Composite</code>
+            * [.level()](#module_composite-class--Composite+level) ⇒ <code>number</code>
+            * [.getDescendentCount()](#module_composite-class--Composite+getDescendentCount) ⇒ <code>number</code>
+            * [.tree()](#module_composite-class--Composite+tree) ⇒ <code>string</code>
+            * [.root()](#module_composite-class--Composite+root) ⇒ <code>Composite</code>
+            * [.Symbol.iterator()](#module_composite-class--Composite+Symbol.iterator)
+            * [.inspect()](#module_composite-class--Composite+inspect)
+            * [.parents()](#module_composite-class--Composite+parents) ⇒ <code>Array.&lt;Composite&gt;</code>
+        * _static_
+            * [.mixInto(target)](#module_composite-class--Composite.mixInto)
 
 <a name="exp_module_composite-class--Composite"></a>
 
@@ -190,6 +193,15 @@ Used by node's `util.inspect`.
 Returns an array of ancestors
 
 **Kind**: instance method of [<code>Composite</code>](#exp_module_composite-class--Composite)  
+<a name="module_composite-class--Composite.mixInto"></a>
+
+#### Composite.mixInto(target)
+**Kind**: static method of [<code>Composite</code>](#exp_module_composite-class--Composite)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| target | <code>object</code> | The target class (or constructor function) to receive the state machine behaviour. |
+
 
 ## Load anywhere
 
@@ -221,7 +233,7 @@ Old browser (adds `window.Composite`):
 
 * * *
 
-&copy; 2016-23 Lloyd Brookes \<75pound@gmail.com\>.
+&copy; 2016-24 Lloyd Brookes \<75pound@gmail.com\>.
 
 Test suite by [test-runner](https://github.com/test-runner-js/test-runner). Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
 
