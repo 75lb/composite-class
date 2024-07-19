@@ -3,7 +3,10 @@
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "3.0.0-0",
   "description": "An isomorphic JavaScript class for building composite structures. Suitable for use as a super class or mixin.",
-  "repository": "https://github.com/75lb/composite-class",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/75lb/composite-class.git"
+  },
   "license": "MIT",
   "type": "module",
   "exports": {
