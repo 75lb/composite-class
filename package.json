@@ -1,7 +1,7 @@
 {
   "name": "composite-class",
   "author": "Lloyd Brookes <75pound@gmail.com>",
-  "version": "3.0.0-0",
+  "version": "3.0.0-1",
   "description": "An isomorphic JavaScript class for building composite structures. Suitable for use as a super class or mixin.",
   "repository": {
     "type": "git",
@@ -34,7 +34,6 @@
     "index.js"
   ],
   "standard": {
-    "ignore": [
-    ]
+    "ignore": []
   }
 }
