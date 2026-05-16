@@ -1,10 +1,9 @@
 import Composite from 'composite-class'
-import TestRunner from 'test-runner'
-import { strict as a } from 'assert'
+import { strict as a } from 'node:assert'
 
-const tom = new TestRunner.Tom()
+const [test, only, skip] = [new Map(), new Map(), new Map()]
 
-tom.test('.add()', function () {
+test.set('.add()', function () {
   const root = new Composite()
   root.id = 'root'
   let child = root.add(new Composite())
@@ -18,7 +17,7 @@ tom.test('.add()', function () {
   a.equal(root.children[1].parent, root)
 })
 
-tom.test('.root()', function () {
+test.set('.root()', function () {
   const tree = new Composite()
   tree.id = 'root'
   let child = tree.add(new Composite())
@@ -28,7 +27,7 @@ tom.test('.root()', function () {
   a.equal(child.root().id, 'root')
 })
 
-tom.test('iteration', function () {
+test.set('iteration', function () {
   const root = new Composite()
   const one = new Composite()
   const two = new Composite()
@@ -37,7 +36,7 @@ tom.test('iteration', function () {
   a.deepEqual(Array.from(root), [root, one, two])
 })
 
-tom.test('mixin2', function () {
+test.set('mixin2', function () {
   class Test {}
   Composite.mixInto(Test)
   const root = new Test()
@@ -48,7 +47,7 @@ tom.test('mixin2', function () {
   a.deepEqual(Array.from(root), [root, one, two])
 })
 
-tom.test('mixin', function () {
+test.set('mixin', function () {
   class Test {}
   Composite.mixInto(Test)
   const root = new Test()
@@ -65,4 +64,4 @@ tom.test('mixin', function () {
 
 })
 
-export default tom
+export { test, only, skip }

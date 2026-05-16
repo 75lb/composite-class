@@ -1,13 +1,12 @@
 {
   "name": "composite-class",
-  "author": "Lloyd Brookes <75pound@gmail.com>",
+  "author": "Lloyd Brookes <opensource@75lb.com> (http://75lb.com)",
   "version": "3.0.0-1",
   "description": "An isomorphic JavaScript class for building composite structures. Suitable for use as a super class or mixin.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/75lb/composite-class.git"
   },
-  "license": "MIT",
   "type": "module",
   "exports": "./index.js",
   "keywords": [
@@ -19,21 +18,29 @@
     "load-anywhere",
     "tree"
   ],
+  "license": "MIT",
   "engines": {
     "node": ">=12.20"
   },
   "scripts": {
-    "test": "test-runner test.js",
-    "docs": "jsdoc2md -t README.hbs index.js > README.md"
+    "test": "75lb-nature test-runner test.js"
   },
-  "devDependencies": {
-    "jsdoc-to-markdown": "^8.0.3",
-    "test-runner": "^0.11.0"
+  "peerDependencies": {
+    "@75lb/nature": "latest"
+  },
+  "peerDependenciesMeta": {
+    "@75lb/nature": {
+      "optional": true
+    }
   },
   "files": [
     "index.js"
   ],
   "standard": {
-    "ignore": []
+    "ignore": [
+      "tmp",
+      "dist"
+    ],
+    "envs": []
   }
 }

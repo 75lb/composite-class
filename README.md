@@ -3,7 +3,6 @@
 [![Gihub repo dependents](https://badgen.net/github/dependents-repo/75lb/composite-class)](https://github.com/75lb/composite-class/network/dependents?dependent_type=REPOSITORY)
 [![Gihub package dependents](https://badgen.net/github/dependents-pkg/75lb/composite-class)](https://github.com/75lb/composite-class/network/dependents?dependent_type=PACKAGE)
 [![Node.js CI](https://github.com/75lb/composite-class/actions/workflows/node.js.yml/badge.svg)](https://github.com/75lb/composite-class/actions/workflows/node.js.yml)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # composite-class
 
@@ -233,7 +232,4 @@ Old browser (adds `window.Composite`):
 
 * * *
 
-&copy; 2016-24 Lloyd Brookes \<75pound@gmail.com\>.
-
-Test suite by [test-runner](https://github.com/test-runner-js/test-runner). Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
-
+&copy; 2016-26 [Lloyd Brookes](https://github.com/75lb) \<opensource@75lb.com\>.
