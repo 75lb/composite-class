@@ -24,7 +24,7 @@ class Person extends Composite {
   }
 
   toString () {
-    return `${this.name} [${this.role}]`
+    return `undefined [undefined]`
   }
 }
 
@@ -70,7 +70,42 @@ Processing: Florence Parly
 Processing: Bruno Le Maire
 ```
 
-{{>main}}
+## composite-class
+
+An isomorphic, load-anywhere JavaScript class for building [composite structures](https://en.wikipedia.org/wiki/Composite_pattern). Suitable for use as a super class or mixin.
+
+- **Type:** `package`
+- **Module type:** Javascript
+- **Supported runtimes:** Node.Js version >= 12.20
+
+#### Example
+
+```js
+import Composite from 'composite-class'
+```
+
+### composite.children
+
+Immediate children.
+
+- **Type:** `object[]`
+
+### composite.parent
+
+Parent.
+
+- **Type:** `Composite`
+
+### composite.add (child)
+
+Add a child.
+
+- **Returns:** `Composite`
+
+| Param | Type | Description |
+| --- | --- | --- |
+| child | `Composite` | The child node to add |
+
 
 ## Load anywhere
 
@@ -102,7 +137,8 @@ Old browser (adds `window.Composite`):
 
 * * *
 
-&copy; 2016-26 Lloyd Brookes \<75pound@gmail.com\>.
+&copy; 2016-26 Lloyd Brookes <75pound@gmail.com>.
 
 Test suite by [test-runner](https://github.com/test-runner-js/test-runner). Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+
 

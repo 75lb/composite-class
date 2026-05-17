@@ -1,21 +1,31 @@
-/**
- * An isomorphic, load-anywhere JavaScript class for building [composite structures](https://en.wikipedia.org/wiki/Composite_pattern). Suitable for use as a super class or mixin.
- * @module composite-class
- * @example
- * const Composite = require('composite-class')
- */
+/*☭
+## composite-class
 
+An isomorphic, load-anywhere JavaScript class for building [composite structures](https://en.wikipedia.org/wiki/Composite_pattern). Suitable for use as a super class or mixin.
+
+- **Type:** `package`
+- **Module type:** Javascript
+- **Supported runtimes:** Node.Js version >= 12.20
+
+#### Example
+
+```js
+import Composite from 'composite-class'
+```
+࿕
+id: Something
+*/
 const _children = new WeakMap()
 const _parent = new WeakMap()
 
-/**
- * @alias module:composite-class
- */
 class Composite {
-  /**
-   * Children
-   * @type {Array}
-   */
+  /*☭
+  ### composite.children
+
+  Immediate children.
+
+  - **Type:** `object[]`
+  */
   get children () {
     if (_children.has(this)) {
       return _children.get(this)
@@ -29,10 +39,13 @@ class Composite {
     _children.set(this, val)
   }
 
-  /**
-   * Parent
-   * @type {Composite}
-   */
+  /*☭
+  ### composite.parent
+
+  Parent.
+
+  - **Type:** `Composite`
+  */
   get parent () {
     return _parent.get(this)
   }
@@ -41,11 +54,23 @@ class Composite {
     _parent.set(this, val)
   }
 
-  /**
-   * Add a child
-   * @param {Composite} child - the child node to add
-   * @returns {Composite}
-   */
+  /*☭
+  ### composite.add (child)
+
+  Add a child.
+
+  - **Returns:** `Composite`
+
+  ¬
+    Param
+    Type
+    Description
+  ¬
+    child
+    `Composite`
+    The child node to add
+  ¬
+  */
   add (child) {
     if (!(isComposite(child))) throw new Error('can only add a Composite instance')
     child.parent = this
