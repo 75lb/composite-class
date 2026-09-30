@@ -23,7 +23,8 @@
     "node": ">=12.20"
   },
   "scripts": {
-    "test": "75lb-nature test-runner test.js"
+    "test": "75lb-nature test-runner test.js",
+    "docs": "dcdoc io-read --inputs index.js dcdoc-parse quick-table insert-into-template --template readme.template body-to-stdout > readme.md"
   },
   "peerDependencies": {
     "@75lb/nature": "latest"

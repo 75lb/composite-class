@@ -11,6 +11,7 @@ An isomorphic, load-anywhere JavaScript class for building [composite structures
 
 ```js
 import Composite from 'composite-class'
+const composite = new Composite()
 ```
 ࿕
 id: Something
@@ -22,7 +23,7 @@ class Composite {
   /*☭
   ### composite.children
 
-  Immediate children.
+  Immediate children. This needs to be a getter (not an instance property) for compatibility with .mixInto(). If Composite has been mixed into a new class and the `children` property does yet exist it will be initialised with an empty array.
 
   - **Type:** `object[]`
   */
@@ -125,20 +126,26 @@ class Composite {
   }
 
   /**
+   * The number of nodes in the tree including the parent.
+   *
    * @returns {number}
    */
-  getDescendentCount () {
+  getNodeCount () {
     return Array.from(this).length
   }
 
   /**
-   * prints a tree using the .toString() representation of each node in the tree
+   * prints a tree using the .treeLabel() defined by each node in the tree.
    * @returns {string}
    */
   tree () {
     return Array.from(this).reduce((prev, curr) => {
-      return (prev += `${'  '.repeat(curr.level())}- ${curr}\n`)
+      return (prev += `${'  '.repeat(curr.level())}- ${curr.treeLabel()}\n`)
     }, '')
+  }
+
+  treeLabel () {
+    throw new Error('Please subclass Composite and add a .treeLabel() method.')
   }
 
   /**
@@ -165,7 +172,7 @@ class Composite {
   /**
    * Used by node's `util.inspect`.
    */
-  inspect (depth) {
+  [Symbol.for('nodejs.util.inspect.custom')] (depth) {
     const clone = Object.assign({}, this)
     delete clone.parent
     return clone
@@ -188,15 +195,22 @@ class Composite {
   }
 
   /**
+   * TODO: this method does not work from subclasses. E.g. create `class Contents extends Composite {}` then try Contents.mixInto. Doesn't work, needs to be `Composite.mixInto()`. This is a problem because treeLabel() expects you to subclass.
+   *
    * @param {object} - The target class (or constructor function) to receive the state machine behaviour.
    */
   static mixInto (target) {
-    for (const methodName of ['children', 'parent', 'add', 'append', 'prepend', 'remove', 'level', 'getDescendentCount', 'tree', 'root', 'inspect', 'parents', Symbol.iterator]) {
+    for (const methodName of ['children', 'parent', 'add', 'append', 'prepend', 'remove', 'level', 'getNodeCount', 'tree', 'treeLabel', 'root', Symbol.for('nodejs.util.inspect.custom'), 'parents', Symbol.iterator]) {
+      /* TODO: on a subclass, the source method will not be found - it's on the base class. You can fix this by using Composite.mixInto instead of SubClass.mixInto but that fails to copy over the overriden work on SubClass. */
       const sourceMethod = Object.getOwnPropertyDescriptor(this.prototype, methodName)
-      if (target.prototype === undefined) {
-        Object.defineProperty(target, methodName, sourceMethod)
+      if (sourceMethod) {
+        if (target.prototype === undefined) {
+          Object.defineProperty(target, methodName, sourceMethod)
+        } else {
+          Object.defineProperty(target.prototype, methodName, sourceMethod)
+        }
       } else {
-        Object.defineProperty(target.prototype, methodName, sourceMethod)
+        console.error(`[Composite.mixInto] Method not found on class/object "${this.name}": `, methodName)
       }
     }
     return target
