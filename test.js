@@ -61,6 +61,23 @@ test.set('mixin', function () {
   a.equal(root.children[0].parent, root)
   a.equal(root.children[1].id, 2)
   a.equal(root.children[1].parent, root)
+})
+
+test.set('subclass mixin', function () {
+  class SubClass extends Composite {}
+  class Test {}
+  SubClass.mixInto(Test)
+  const root = new Test()
+  root.id = 'root'
+  let child = root.add(new Composite())
+  child.id = 1
+  child = root.add(new Composite())
+  child.id = 2
+  a.equal(root.id, 'root')
+  a.equal(root.children[0].id, 1)
+  a.equal(root.children[0].parent, root)
+  a.equal(root.children[1].id, 2)
+  a.equal(root.children[1].parent, root)
 
 })
 

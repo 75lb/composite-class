@@ -23,7 +23,7 @@ class Composite {
   /*☭
   ### composite.children
 
-  Immediate children. This needs to be a getter (not an instance property) for compatibility with .mixInto(). If Composite has been mixed into a new class and the `children` property does yet exist it will be initialised with an empty array.
+  Immediate children. This needs to be a getter (not an instance property) for compatibility with .mixInto(). If Composite has been mixed into a new class and the `children` property does yet exist it will be initialised with an empty array. However, a getter is not enumerable on the subclass - changing to a property, mixInto can create a copy on the subclass.
 
   - **Type:** `object[]`
   */
@@ -201,8 +201,10 @@ class Composite {
    */
   static mixInto (target) {
     for (const methodName of ['children', 'parent', 'add', 'append', 'prepend', 'remove', 'level', 'getNodeCount', 'tree', 'treeLabel', 'root', Symbol.for('nodejs.util.inspect.custom'), 'parents', Symbol.iterator]) {
-      /* TODO: on a subclass, the source method will not be found - it's on the base class. You can fix this by using Composite.mixInto instead of SubClass.mixInto but that fails to copy over the overriden work on SubClass. */
-      const sourceMethod = Object.getOwnPropertyDescriptor(this.prototype, methodName)
+      /* TODO: on a subclass, the source method will not be found - it's on the base class. You can fix this by using Composite.mixInto instead of SubClass.mixInto but that fails to copy over the overriden work on SubClass.
+      Fix? Reference Composite directly instead of `this`.
+       */
+      const sourceMethod = Object.getOwnPropertyDescriptor(Composite.prototype, methodName)
       if (sourceMethod) {
         if (target.prototype === undefined) {
           Object.defineProperty(target, methodName, sourceMethod)
