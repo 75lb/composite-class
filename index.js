@@ -16,44 +16,11 @@ const composite = new Composite()
 ࿕
 id: Something
 */
-const _children = new WeakMap()
-const _parent = new WeakMap()
 
 class Composite {
-  /*☭
-  ### composite.children
-
-  Immediate children. This needs to be a getter (not an instance property) for compatibility with .mixInto(). If Composite has been mixed into a new class and the `children` property does yet exist it will be initialised with an empty array. However, a getter is not enumerable on the subclass - changing to a property, mixInto can create a copy on the subclass.
-
-  - **Type:** `object[]`
-  */
-  get children () {
-    if (_children.has(this)) {
-      return _children.get(this)
-    } else {
-      _children.set(this, [])
-      return _children.get(this)
-    }
-  }
-
-  set children (val) {
-    _children.set(this, val)
-  }
-
-  /*☭
-  ### composite.parent
-
-  Parent.
-
-  - **Type:** `Composite`
-  */
-  get parent () {
-    return _parent.get(this)
-  }
-
-  set parent (val) {
-    _parent.set(this, val)
-  }
+  /* instance properties, not getters as they are not enumerable */
+  children = []
+  parent
 
   /*☭
   ### composite.add (child)
@@ -75,6 +42,7 @@ class Composite {
   add (child) {
     if (!(isComposite(child))) throw new Error('can only add a Composite instance')
     child.parent = this
+    this._initComposite()
     this.children.push(child)
     return child
   }
@@ -86,6 +54,7 @@ class Composite {
   append (child) {
     if (!(child instanceof Composite)) throw new Error('can only add a Composite instance')
     child.parent = this
+    this._initComposite()
     this.children.push(child)
     return child
   }
@@ -97,6 +66,7 @@ class Composite {
   prepend (child) {
     if (!(child instanceof Composite)) throw new Error('can only add a Composite instance')
     child.parent = this
+    this._initComposite()
     this.children.unshift(child)
     return child
   }
@@ -106,6 +76,7 @@ class Composite {
    * @returns {Composite}
    */
   remove (child) {
+    this._initComposite()
     return this.children.splice(this.children.indexOf(child), 1)
   }
 
@@ -114,6 +85,7 @@ class Composite {
    * @returns {number}
    */
   level () {
+    /* TODO: use the getAncestors() iterator? */
     let count = 0
     function countParent (composite) {
       if (composite.parent) {
@@ -163,6 +135,7 @@ class Composite {
    * default iteration strategy
    */
   * [Symbol.iterator] () {
+    this._initComposite()
     yield this
     for (const child of this.children) {
       yield * child
@@ -186,28 +159,35 @@ class Composite {
     }
   }
 
+  /* Required because Composite behaviour can be mixed into a target class, instances of which will not have `children` set by default. */
+  /* TODO: make this private, or a Symbol, some non-enumerable not visible to the user */
+  _initComposite () {
+    this.children ||= []
+  }
+
   /**
    * TODO: this method does not work from subclasses. E.g. create `class Contents extends Composite {}` then try Contents.mixInto. Doesn't work, needs to be `Composite.mixInto()`. This is a problem because treeLabel() expects you to subclass.
    *
    * @param {object} - The target class (or constructor function) to receive the state machine behaviour.
    */
-  static mixInto (target) {
-    for (const methodName of ['children', 'parent', 'add', 'append', 'prepend', 'remove', 'level', 'getNodeCount', 'tree', 'treeLabel', 'root', Symbol.for('nodejs.util.inspect.custom'), 'getAncestors', Symbol.iterator]) {
+  static mixInto (TargetClass) {
+    for (const name of ['_initComposite', 'add', 'append', 'prepend', 'remove', 'level', 'getNodeCount', 'tree', 'treeLabel', 'root', Symbol.for('nodejs.util.inspect.custom'), 'getAncestors', Symbol.iterator]) {
       /* TODO: on a subclass, the source method will not be found - it's on the base class. You can fix this by using Composite.mixInto instead of SubClass.mixInto but that fails to copy over the overriden work on SubClass.
       Fix? Reference Composite directly instead of `this`.
        */
-      const sourceMethod = Object.getOwnPropertyDescriptor(Composite.prototype, methodName)
+      const sourceMethod = Object.getOwnPropertyDescriptor(Composite.prototype, name)
       if (sourceMethod) {
-        if (target.prototype === undefined) {
-          Object.defineProperty(target, methodName, sourceMethod)
+        if (TargetClass.prototype === undefined) {
+          throw new Error('can only mixInto a class') // TODO: use typical.isClass?
+          // Object.defineProperty(TargetClass, name, sourceMethod)
         } else {
-          Object.defineProperty(target.prototype, methodName, sourceMethod)
+          Object.defineProperty(TargetClass.prototype, name, sourceMethod)
         }
       } else {
-        console.error(`[Composite.mixInto] Method not found on class/object "${this.name}": `, methodName)
+        console.error(`[Composite.mixInto] Method not found on class/object "${this.name}": `, name)
       }
     }
-    return target
+    return TargetClass
   }
 }
 
