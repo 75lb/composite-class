@@ -78,7 +78,15 @@ test.set('subclass mixin', function () {
   a.equal(root.children[0].parent, root)
   a.equal(root.children[1].id, 2)
   a.equal(root.children[1].parent, root)
+})
 
+test.set('getAncestors', async function () {
+  const root = new Composite()
+  const child1 = new Composite()
+  const child2 = new Composite()
+  root.add(child1)
+  child1.add(child2)
+  a.deepEqual(Array.from(child2.getAncestors()), [child1, root])
 })
 
 export { test, only, skip }

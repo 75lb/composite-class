@@ -178,20 +178,12 @@ class Composite {
     return clone
   }
 
-  /**
-   * Returns an array of ancestors
-   * @return {Composite[]}
-   */
-  parents () {
-    const output = []
-    function addParent (node) {
-      if (node.parent) {
-        output.push(node.parent)
-        addParent(node.parent)
-      }
+  * getAncestors () {
+    let parent = this.parent
+    while (parent) {
+      yield parent
+      parent = parent.parent
     }
-    addParent(this)
-    return output
   }
 
   /**
@@ -200,7 +192,7 @@ class Composite {
    * @param {object} - The target class (or constructor function) to receive the state machine behaviour.
    */
   static mixInto (target) {
-    for (const methodName of ['children', 'parent', 'add', 'append', 'prepend', 'remove', 'level', 'getNodeCount', 'tree', 'treeLabel', 'root', Symbol.for('nodejs.util.inspect.custom'), 'parents', Symbol.iterator]) {
+    for (const methodName of ['children', 'parent', 'add', 'append', 'prepend', 'remove', 'level', 'getNodeCount', 'tree', 'treeLabel', 'root', Symbol.for('nodejs.util.inspect.custom'), 'getAncestors', Symbol.iterator]) {
       /* TODO: on a subclass, the source method will not be found - it's on the base class. You can fix this by using Composite.mixInto instead of SubClass.mixInto but that fails to copy over the overriden work on SubClass.
       Fix? Reference Composite directly instead of `this`.
        */
