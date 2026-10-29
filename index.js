@@ -102,6 +102,7 @@ class Composite {
    *
    * @returns {number}
    */
+  /* TODO: does this method name make it clear it only counts the descendents not the ancestors?  */
   getNodeCount () {
     return Array.from(this).length
   }
@@ -110,9 +111,13 @@ class Composite {
    * prints a tree using the .treeLabel() defined by each node in the tree.
    * @returns {string}
    */
-  tree () {
+  tree (depth = 0) {
     return Array.from(this).reduce((prev, curr) => {
-      return (prev += `${'  '.repeat(curr.level())}- ${curr.treeLabel()}\n`)
+      if (!depth || curr.level() + 1 <= depth) {
+        return (prev += `${'  '.repeat(curr.level())}- ${curr.treeLabel()}\n`)
+      } else {
+        return prev
+      }
     }, '')
   }
 
@@ -143,7 +148,7 @@ class Composite {
   }
 
   /**
-   * Used by node's `util.inspect`.
+   * Used by node's `util.inspect`. Deletes the `parent` property to prevent the console.log output becoming extremely cluttered.
    */
   [Symbol.for('nodejs.util.inspect.custom')] (depth) {
     const clone = Object.assign({}, this)

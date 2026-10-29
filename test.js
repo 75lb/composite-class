@@ -89,4 +89,35 @@ test.set('getAncestors', async function () {
   a.deepEqual(Array.from(child2.getAncestors()), [child1, root])
 })
 
+test.set('tree()', async function () {
+  class TestTree extends Composite {
+    treeLabel () {
+      return 'something'
+    }
+  }
+  const root = new TestTree()
+  const child1 = new TestTree()
+  const child2 = new TestTree()
+  root.add(child1)
+  child1.add(child2)
+  // this.data = root.tree()
+  a.equal(root.tree(), '- something\n  - something\n    - something\n')
+})
+
+
+test.set('tree(depth)', async function () {
+  class TestTree extends Composite {
+    treeLabel () {
+      return 'something'
+    }
+  }
+  const root = new TestTree()
+  const child1 = new TestTree()
+  const child2 = new TestTree()
+  root.add(child1)
+  child1.add(child2)
+  const result = root.tree(2)
+  a.equal(result, '- something\n  - something\n')
+})
+
 export { test, only, skip }
