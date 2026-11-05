@@ -147,6 +147,10 @@ class Composite {
     }
   }
 
+  find (fn) {
+    return Array.from(this).find(fn)
+  }
+
   /**
    * Used by node's `util.inspect`. Deletes the `parent` property to prevent the console.log output becoming extremely cluttered.
    */
