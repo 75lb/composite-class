@@ -40,7 +40,7 @@ class Composite {
   ¬
   */
   add (child) {
-    if (!(isComposite(child))) throw new Error('can only add a Composite instance')
+    if (!(Composite.isComposite(child))) throw new Error('can only add a Composite instance')
     child.parent = this
     this._initComposite()
     this.children.push(child)
@@ -52,7 +52,7 @@ class Composite {
    * @returns {Composite}
    */
   append (child) {
-    if (!(child instanceof Composite)) throw new Error('can only add a Composite instance')
+    if (!(Composite.isComposite(child))) throw new Error('can only append a Composite instance')
     child.parent = this
     this._initComposite()
     this.children.push(child)
@@ -64,7 +64,7 @@ class Composite {
    * @returns {Composite}
    */
   prepend (child) {
-    if (!(child instanceof Composite)) throw new Error('can only add a Composite instance')
+    if (!(Composite.isComposite(child))) throw new Error('can only prepend a Composite instance')
     child.parent = this
     this._initComposite()
     this.children.unshift(child)
@@ -174,10 +174,13 @@ class Composite {
     this.children ||= []
   }
 
-  /**
-   * TODO: this method does not work from subclasses. E.g. create `class Contents extends Composite {}` then try Contents.mixInto. Doesn't work, needs to be `Composite.mixInto()`. This is a problem because treeLabel() expects you to subclass.
-   *
-   * @param {object} - The target class (or constructor function) to receive the state machine behaviour.
+  /*
+   TODO: this method does not work from subclasses. E.g. create `class Contents extends Composite {}` then try Contents.mixInto. Doesn't work, needs to be `Composite.mixInto()`. This is a problem because treeLabel() expects you to subclass.
+
+   TODO: Update this mixin function so it doesn't require the user to call _initComposite. The challenge is to copy the class field `children` property over to the TargetClass. See https://chat.qwen.ai/c/91669a7a-5e62-4108-a3cb-d312a76734e3
+
+   Params
+     TargetClass | object | The target class (or constructor function) to receive the state machine behaviour.
    */
   static mixInto (TargetClass) {
     for (const name of ['_initComposite', 'add', 'append', 'prepend', 'remove', 'level', 'getNodeCount', 'tree', 'treeLabel', 'root', Symbol.for('nodejs.util.inspect.custom'), 'getAncestors', Symbol.iterator]) {
@@ -198,10 +201,11 @@ class Composite {
     }
     return TargetClass
   }
+
+  static isComposite (item) {
+    return item && item.children && item.add && item.level && item.root
+  }
 }
 
-function isComposite (item) {
-  return item && item.children && item.add && item.level && item.root
-}
 
 export default Composite

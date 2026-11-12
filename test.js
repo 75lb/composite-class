@@ -120,4 +120,23 @@ test.set('tree(depth)', async function () {
   a.equal(result, '- something\n  - something\n')
 })
 
+test.set('isComposite 1', async function () {
+  const root = new Composite()
+  a.ok(Composite.isComposite(root))
+})
+
+test.set('isComposite 2: subclass', async function () {
+  class TestTree extends Composite {}
+  const root = new TestTree()
+  a.ok(TestTree.isComposite(root))
+})
+
+test.set('isComposite 3: mixin', async function () {
+  class TestTree {}
+  Composite.mixInto(TestTree)
+  const root = new TestTree()
+  root._initComposite() // required, for now.
+  a.ok(Composite.isComposite(root))
+})
+
 export { test, only, skip }
