@@ -172,7 +172,7 @@ class Composite {
   /* TODO: make this private, or a Symbol, some non-enumerable not visible to the user */
   /* TODO: remove this requirement.. could it be executed by a Proxy wrapper on set of root.id or similar? */
   _initComposite () {
-    this.children ||= []
+    this.children = this.children || []
   }
 
   toJSON () {
