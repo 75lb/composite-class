@@ -174,6 +174,14 @@ class Composite {
     this.children ||= []
   }
 
+  toJSON () {
+    const clone = Object.assign({}, this)
+    /* Remove cicular references */
+    delete clone.parent
+    clone.children = this.children.map(c => c.toJSON())
+    return clone
+  }
+
   /*
    TODO: this method does not work from subclasses. E.g. create `class Contents extends Composite {}` then try Contents.mixInto. Doesn't work, needs to be `Composite.mixInto()`. This is a problem because treeLabel() expects you to subclass.
 

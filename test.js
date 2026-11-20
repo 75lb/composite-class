@@ -139,4 +139,18 @@ test.set('isComposite 3: mixin', async function () {
   a.ok(Composite.isComposite(root))
 })
 
+test.set('toJSON', async function () {
+  const root = new Composite()
+  const child1 = new Composite()
+  const child2 = new Composite()
+  root.id = 'root'
+  child1.id = 'child1'
+  child2.id = 'child2'
+  root.add(child1)
+  child1.add(child2)
+  const result = JSON.stringify(root)
+  // this.data = result
+  a.equal(result, '{"children":[{"children":[{"children":[],"id":"child2"}],"id":"child1"}],"id":"root"}')
+})
+
 export { test, only, skip }
