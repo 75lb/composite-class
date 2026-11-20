@@ -170,6 +170,7 @@ class Composite {
 
   /* Required because Composite behaviour can be mixed into a target class, instances of which will not have `children` set by default. */
   /* TODO: make this private, or a Symbol, some non-enumerable not visible to the user */
+  /* TODO: remove this requirement.. could it be executed by a Proxy wrapper on set of root.id or similar? */
   _initComposite () {
     this.children ||= []
   }
@@ -191,7 +192,7 @@ class Composite {
      TargetClass | object | The target class (or constructor function) to receive the state machine behaviour.
    */
   static mixInto (TargetClass) {
-    for (const name of ['_initComposite', 'add', 'append', 'prepend', 'remove', 'level', 'getNodeCount', 'tree', 'treeLabel', 'root', Symbol.for('nodejs.util.inspect.custom'), 'getAncestors', Symbol.iterator]) {
+    for (const name of ['_initComposite', 'add', 'append', 'prepend', 'remove', 'level', 'getNodeCount', 'tree', 'treeLabel', 'root', Symbol.for('nodejs.util.inspect.custom'), 'getAncestors', Symbol.iterator, 'toJSON']) {
       /* TODO: on a subclass, the source method will not be found - it's on the base class. You can fix this by using Composite.mixInto instead of SubClass.mixInto but that fails to copy over the overriden work on SubClass.
       Fix? Reference Composite directly instead of `this`.
        */

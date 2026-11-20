@@ -149,7 +149,24 @@ test.set('toJSON', async function () {
   root.add(child1)
   child1.add(child2)
   const result = JSON.stringify(root)
-  // this.data = result
+  a.equal(result, '{"children":[{"children":[{"children":[],"id":"child2"}],"id":"child1"}],"id":"root"}')
+})
+
+test.set('toJSON on a mixin', async function () {
+  class TestTree {}
+  Composite.mixInto(TestTree)
+  const root = new TestTree()
+  const child1 = new TestTree()
+  const child2 = new TestTree()
+  root._initComposite()
+  child1._initComposite()
+  child2._initComposite()
+  root.id = 'root'
+  child1.id = 'child1'
+  child2.id = 'child2'
+  root.add(child1)
+  child1.add(child2)
+  const result = JSON.stringify(root)
   a.equal(result, '{"children":[{"children":[{"children":[],"id":"child2"}],"id":"child1"}],"id":"root"}')
 })
 
